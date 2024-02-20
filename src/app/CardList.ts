@@ -38,7 +38,7 @@ const CardList = [
   {
     id: 7,
     title: "DETAIL DES CHARGES",
-    link: "https://www.google.com",
+    link: "/login",
     description: "This is a card",
   },
   {

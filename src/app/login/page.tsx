@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-
+import PageTitleWrapper from "../cmp/PageTitleWrapper";
 export default function Login() {
   const [credentials, setCredentials] = useState({
     username: "",
@@ -34,7 +34,7 @@ export default function Login() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <PageTitleWrapper title="Login">
       <div className="h-300 relative flex place-items-center">
         <form
           onSubmit={handleSubmit}
@@ -74,6 +74,6 @@ export default function Login() {
           </button>
         </form>
       </div>
-    </main>
+    </PageTitleWrapper>
   );
 }
