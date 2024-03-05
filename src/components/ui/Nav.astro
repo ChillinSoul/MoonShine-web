@@ -1,0 +1,42 @@
+---
+
+---
+
+<div class="fixed flex w-full items-center justify-between p-4">
+  <h1 class="text-2xl font-bold">Moonshine</h1>
+  <div class="flex items-center space-x-4">
+    <a href="/"> Home</a>
+    <a href="/user"> Profile</a>
+    <a href="/login"> Login</a>
+    <a href="/settings">Settings</a>
+  </div>
+</div>
+
+<style>
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(244, 244, 244);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .space-x-4 > * {
+    margin-right: 1rem;
+  }
+  .space-x-4 > *:last-child {
+    margin-right: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  h1 {
+    color: rgb(255, 149, 0);
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+import type { FormInputInt } from '../../types/Form'
+let { name, label, type, color, value, maxWidth } = Astro.props as FormInputInt
+let $label_style_string = `text-${color}-500 rounded`
+let $input_style_string = `border-2 text-slate-700 border-${color}-500 rounded ${maxWidth == 'true' ? 'w-full' : ''} focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50`
+---
+
+<div class="p-5">
+  <label class={$label_style_string} for={name}>{label}</label>
+  <input
+    class={$input_style_string}
+    type={(type as any) ?? 'text'}
+    id={name}
+    name={name}
+    value={value}
+  />
+</div>
+
+<style></style>

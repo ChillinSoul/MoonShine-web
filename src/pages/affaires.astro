@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro'
+import InputLabel from '../components/input/InputLabel'
+import Listing from '../components/Listing.astro'
+import Button from '../components/input/Button.astro'
+import NavTitle from '../components/ui/NavTitle.astro'
+import Bubble from '../components/ui/Bubble.astro'
+import { encoding } from '../NavEncoding'
+export const prerender = true
+
+const divider = 'h-[1px] bg-slate-500'
+---
+
+<Layout title="">
+  <NavTitle title="AFFAIRES" titles={encoding} />
+  <Bubble>
+    <div class="flex">
+      <form
+        action="/affaires"
+        method="get"
+        class="flex justify-between w-full my-5"
+      >
+        <InputLabel
+          client:load
+          label="Recherche"
+          name="recherche"
+          type="text"
+          color="purple"
+        />
+        <div>
+          <Button text="MODIFIER" color="green" type="submit" />
+          <Button text="SUPPRIMER" color="red" type="submit" />
+        </div>
+      </form>
+    </div>
+  </Bubble>
+  <Bubble>
+    <form action="/affaires" method="post">
+      <div class="grid grid-cols-5">
+        <InputLabel
+          client:load
+          label="DATE"
+          name="date"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="FARDE"
+          name="farde"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="DECLARANT"
+          name="declarant"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="INSTRUCTION"
+          name="instruction"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="MARQUAGE"
+          name="marquage"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          label="LTA"
+          name="lta"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="N AFFAIRE"
+          name="nAffaire"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="GRP"
+          name="grp"
+          type="text"
+          color="indigo"
+          value=""
+        />
+
+        <InputLabel
+          client:load
+          label="COLIS"
+          name="colis"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="POIDS"
+          name="poids"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="CLIENT"
+          name="client"
+          type="text"
+          color="indigo"
+          value=""
+        />
+        <InputLabel
+          client:load
+          label="COMPTOIR"
+          name="comptoir"
+          type="text"
+          color="indigo"
+          value=""
+        />
+
+        <InputLabel
+          client:load
+          label="DESIGNATION"
+          name="designation"
+          type="text"
+          color="indigo"
+          value=""
+        />
+
+        <InputLabel
+          client:load
+          label="TAUX"
+          name="taux"
+          type="text"
+          color="indigo"
+          value=""
+        />
+      </div>
+      <div class={divider}></div>
+      <div class="w-full grid grid-cols-[60%,40%]">
+        <div class="size-full grid grid-cols-3">
+          <InputLabel
+            client:load
+            label="USD-Kg"
+            name="usdKg"
+            type="text"
+            color="lime"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="FRET EUR"
+            name="fretEur"
+            type="text"
+            color="sky"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="N FCT BLX"
+            name="nFctBlx"
+            type="text"
+            color="sky"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="EXTD-USD"
+            name="extdUsd"
+            type="text"
+            color="amber"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="EXTSA-USD"
+            name="extsaUsd"
+            type="text"
+            color="amber"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="PKGF-EUR"
+            name="pKgfEur"
+            type="text"
+            color="amber"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="BASE Kg-EUR"
+            name="baseKgEur"
+            type="text"
+            color="yellow"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="N FCT"
+            name="nFct"
+            type="text"
+            color="yellow"
+            value=""
+          />
+          <InputLabel
+            client:load
+            label="VAL FCT"
+            name="valFct"
+            type="text"
+            color="yellow"
+            value=""
+          />
+        </div>
+        <div class="size-full">
+          <Listing
+            title="LISTING N FCT DE LA FARDE EN COURS"
+            color="slate"
+            columns={[
+              {
+                title: 'N AFFAIRE',
+                key: 'nAffaire',
+                color: 'indigo',
+                items: ['1', '2', '3', '4', '5'],
+              },
+              {
+                title: 'CLIENT',
+                key: 'client',
+                color: 'indigo',
+                items: ['1', '2', '3', '4', '5'],
+              },
+              {
+                title: 'N FACTURE',
+                key: 'nFacture',
+                color: 'indigo',
+                items: ['1', '2', '3', '4', '5'],
+              },
+            ]}
+          />
+        </div>
+      </div>
+      <div class={divider}></div>
+      <div class="my-5">
+        <Button type="submit" text="Valider" color="green" />
+      </div>
+    </form>
+  </Bubble>
+</Layout>
+../components/input/InputLabel

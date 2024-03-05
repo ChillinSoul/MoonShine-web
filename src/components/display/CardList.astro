@@ -1,0 +1,9 @@
+---
+import Card from './Card.astro'
+import type { CardIntList } from '../../types/Card'
+let { cards } = Astro.props as CardIntList
+---
+
+<div class="grid grid-cols-3 gap-4">
+  {cards.map((crd) => <Card card={crd} />)}
+</div>

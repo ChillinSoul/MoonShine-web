@@ -1,0 +1,11 @@
+---
+import type { FormInt, FormInputInt, ButtonInt } from '../types/Form'
+import InputLabel from './input/InputLabel.astro'
+import FormButton from './input/FormButton.astro'
+const { inputs, button: ButtonInt } = Astro.props as FormInt
+---
+
+<form>
+  {inputs.map((input: FormInputInt) => <InputLabel {...input} />)}
+  <FormButton {...ButtonInt} />
+</form>

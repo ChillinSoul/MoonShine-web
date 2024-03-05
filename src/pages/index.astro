@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro'
+import TopMenu from '../components/TopMenu.astro'
+
+const title = 'The new Moonligtht!'
+---
+
+<Layout title={title} noTitle={true}>
+  <div class="items-center m-40">
+    <TopMenu title={title} />
+  </div>
+</Layout>
+
+<style>
+  .m-40 {
+    margin: 20rem;
+  }
+  .items-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

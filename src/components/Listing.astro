@@ -1,0 +1,26 @@
+---
+const { title, color, columns } = Astro.props
+const nCols = columns.length
+---
+
+<div class="m-5">
+  <h2 class=` text-${color}-500 text-center  p-2`>{title}</h2>
+  <div class=`grid grid-cols-${nCols}  border-[1px]rounded border-${color} `>
+    {
+      columns.map((item: any) => (
+        <div class={` `}>
+          <h3
+            class={`text-${item.color}-500  border-${item.color}-500 text-center`}
+          >
+            {item.title}
+          </h3>
+          {item.items.map((subItem: any, j: number) => (
+            <div class={`border-[1px] border-${item.color}-200 p-2`}>
+              {subItem}
+            </div>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</div>

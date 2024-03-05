@@ -1,0 +1,15 @@
+---
+import type { ButtonInt } from '../../types/Form'
+const { text } = Astro.props as ButtonInt
+---
+
+<button
+  type="submit"
+  class="submit border-2
+text-slate-700
+border-green-500
+rounded
+p-3
+m-5"
+  >{text}
+</button>

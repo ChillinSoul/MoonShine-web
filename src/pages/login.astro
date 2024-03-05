@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro'
+import InputLabel from '../components/input/InputLabel'
+import Button from '../components/input/Button.astro'
+---
+
+<Layout title="">
+  <form
+    action="/login"
+    method="post"
+    class="items-center m-20 hover:border-orange-400 focus-within:border-orange-400 p-10 rounded-lg border-2"
+  >
+    <h1 class="text-5xl pb-10 text-orange-400">login</h1>
+    <InputLabel name="username" type="text" label="Username" />
+    <InputLabel name="password" type="password" label="Password" />
+    <Button text="valider" color="orange" />
+  </form>
+</Layout>
+<script>
+  const buttons = document.querySelectorAll('button.submit')
+
+  // Handle clicks on each button.
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      alert('Button was clicked!')
+    })
+  })
+</script>
+../components/input/InputLabel
