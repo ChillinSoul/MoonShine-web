@@ -80,9 +80,10 @@ h1 {
     position: relative;
     height: 5rem;
     transform: translateY(0.5rem);
+    padding: 0 3rem;
 }
 .input-label>label {
-    translate: -1.1rem -1.1rem;
+    translate: 0 -0.9rem;
     position: absolute;
     display: block;
     background-color: var(--bg-lighter);
