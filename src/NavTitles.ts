@@ -1,1 +1,1 @@
-export const titles = ['ETATS', 'RESULTATS', 'STATISTIQUES']
+export const titles = ["ETATS", "RESULTATS", "STATISTIQUES"];

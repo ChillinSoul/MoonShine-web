@@ -5,4 +5,4 @@ const DashboardPage = () => {
       <p>Welcome to the dashboard</p>
     </div>
   );
-}
+};

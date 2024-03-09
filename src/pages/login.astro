@@ -6,8 +6,7 @@ import Button from '../components/input/Button.astro'
 
 <Layout title="">
   <form
-    action="/login"
-    method="post"
+    id="loginForm"
     class="items-center m-20 hover:border-orange-400 focus-within:border-orange-400 p-10 rounded-lg border-2"
   >
     <h1 class="text-5xl pb-10 text-orange-400">login</h1>
@@ -17,13 +16,30 @@ import Button from '../components/input/Button.astro'
   </form>
 </Layout>
 <script>
-  const buttons = document.querySelectorAll('button.submit')
+  const form = document.getElementById('loginForm');
 
-  // Handle clicks on each button.
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      alert('Button was clicked!')
-    })
-  })
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form as HTMLFormElement);
+    const username = formData.get('username');
+    const password = formData.get('password');
+
+    const response = await fetch('http://localhost:4000/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    console.log(response);
+    if (response.ok) {
+      const { token } = await response.json();
+      console.log(token);
+      localStorage.setItem('jwt', token);
+      alert('Login successful!');
+    } else {
+      alert('Login failed!');
+    }
+  });
 </script>
-../components/input/InputLabel

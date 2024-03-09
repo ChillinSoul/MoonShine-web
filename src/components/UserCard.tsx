@@ -12,8 +12,6 @@ type Props = {
 };
 
 export default function Card({ user, pagetype }: Props) {
-  
-
   const greeting = user?.name ? (
     <div className="flex flex-col items-center rounded-lg bg-white p-6 text-5xl font-bold text-black">
       Hello {user?.name}!
@@ -25,8 +23,6 @@ export default function Card({ user, pagetype }: Props) {
       {user?.email}
     </div>
   ) : null;
-
-  
 
   return (
     <section className="flex flex-col gap-4">

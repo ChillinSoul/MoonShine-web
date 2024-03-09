@@ -6,7 +6,7 @@ interface Props {
   title: string
   noTitle?: boolean
 }
-
+import Aside from '../components/ui/Aside.astro'
 const { title, noTitle } = Astro.props
 ---
 
@@ -23,12 +23,17 @@ const { title, noTitle } = Astro.props
   </head>
   <body class="overflow-y-auto h-full">
     <Nav />
-    <PageTitleWrapper title={noTitle ? '' : title}>
-      <slot />
-    </PageTitleWrapper>
+    <div class="flex flex-col md:flex-row">
+      <Aside />
+      <main class="flex-1">
+        <PageTitleWrapper title={noTitle ? '' : title}>
+          <slot />
+        </PageTitleWrapper>
+      </main>
+    
 
     <script>
-      import '../scripts/menu.js'
+
     </script>
   </body>
 </html>

@@ -2,9 +2,30 @@
 import Layout from '../layouts/Layout.astro'
 import Bubble from '../components/ui/Bubble.astro'
 import CardList from '../components/display/CardList.astro'
-import Cards from '../CardList'
+//import Cards from '../CardList'
 import TopMenu from '../components/TopMenu.astro'
+import type { CardInt } from '../types/Card'
 const title = 'ETATS'
+
+let Cards: CardInt[] =  [  {
+      id: 1,
+      title: "SUIVI OPERATIONNEL",
+      link: "https://www.google.com",
+      description: "This is a card",
+    },
+    {
+      id: 2,
+      title: "COMPARATIF ANNEES",
+      link: "https://www.google.com",
+      description: "This is a card",
+    },{
+    id: 3,
+    title: "TYPES D'AFFAIRES",
+    link: "https://www.google.com",
+    description: "This is a card",
+  }
+  ]
+    
 ---
 
 <Layout title={title} noTitle={true}>

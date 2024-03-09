@@ -1,1 +1,1 @@
-export const encoding = ['AFFAIRES', 'CAISSES']
+export const encoding = ["AFFAIRES", "CAISSES"];
