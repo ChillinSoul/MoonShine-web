@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Bubble from '../components/ui/Bubble.astro';
+import LogOut from '../components/auth/logout';
+---
+
+<Layout title="login">
+  <Bubble cls="w-96 justify-center m-auto mt-10">
+    <LogOut client:only="react" /> 
+  </Bubble>
+</Layout>

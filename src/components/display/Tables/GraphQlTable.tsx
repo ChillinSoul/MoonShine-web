@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-const GraphQLTable = ({ query, endpoint = 'http://localhost:4000/graphql' } : {query : string, endpoint :string}) => {
+const GraphQLTable = ({
+  query,
+  endpoint = "http://localhost:4000/graphql",
+}: {
+  query: string;
+  endpoint: string;
+}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query }),
     })
       .then((response) => response.json())
       .then((response) => {
         if (response.errors) {
-          setError(response.errors.map((e : any) => e.message).join(', '));
+          setError(response.errors.map((e: any) => e.message).join(", "));
         } else {
           setData(response.data);
         }
@@ -27,8 +33,8 @@ const GraphQLTable = ({ query, endpoint = 'http://localhost:4000/graphql' } : {q
   if (!data) return <p>Loading...</p>;
 
   // Extract keys for table headers
-  const entries = Object.entries(data).flatMap(([key, value]) => 
-    value instanceof Array ? value : [{ [key]: value }]
+  const entries = Object.entries(data).flatMap(([key, value]) =>
+    value instanceof Array ? value : [{ [key]: value }],
   );
   const headers = entries.length > 0 ? Object.keys(entries[0]) : [];
 
@@ -40,7 +46,7 @@ const GraphQLTable = ({ query, endpoint = 'http://localhost:4000/graphql' } : {q
           <thead>
             <tr>
               {headers.map((header) => (
-                <th key={header}>{header.replace(/_/g, ' ')}</th>
+                <th key={header}>{header.replace(/_/g, " ")}</th>
               ))}
             </tr>
           </thead>
@@ -48,7 +54,7 @@ const GraphQLTable = ({ query, endpoint = 'http://localhost:4000/graphql' } : {q
             {entries.map((entry, index) => (
               <tr key={index}>
                 {headers.map((header) => (
-                  <td key={header}>{entry[header] ?? 'N/A'}</td>
+                  <td key={header}>{entry[header] ?? "N/A"}</td>
                 ))}
               </tr>
             ))}

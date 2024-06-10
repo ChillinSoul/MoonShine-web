@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {AffaireEncodage} from "../components/reactPages/AffaireEncodage";
+import NavTitle from "../components/ui/NavTitle.astro";
+import Bubble from "../components/ui/Bubble.astro";
+import { encoding } from "../NavEncoding";
+import type { AffaireType } from "../types/Affaires";
+
+export const prerender = true;
+
+const divider = "h-[1px] bg-slate-500";
+const props = Astro.props;
+let filler : AffaireType ;
+filler = props.filler ? props.filler :{
+    DATE: Date.now() as unknown as string,
+    AFFAIRE: "",
+    FARD_N: "",
+    DECLARANT: "",
+    INSTRUCTION: "",
+    MARQUAGE: "",
+    LTA: "",
+    GRP: "",
+    COLIS: 1,
+    POIDS: 1,
+    CLIENT: "",
+    COMPTOIR: "",
+    DESIGNATION: "",
+    TAUX: 0,
+    US_DKg: 0,
+    FRET_EUR: 0,
+    N_FCT_BLX: "",
+    EXTD_USD: 0,
+    EXTSA_USD: 0,
+    PKGF_EUR: 0,
+    BASE_Kg_EUR: 0,
+    FCT_N: "",
+    FCT: 0,
+};
+
+---
+
+<Layout title='AFFAIRES' noTitle={true}>
+    <NavTitle title='AFFAIRE' titles={encoding} />
+    <Bubble cls="p-10 w-full m-auto h-[calc(100%_-_130px)] overflow-y-auto">
+        <AffaireEncodage client:only="react"/>
+    </Bubble>
+</Layout>

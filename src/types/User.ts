@@ -1,9 +1,11 @@
 export interface User {
-  id: string;
-  name: string;
-  email: string;
-  username: string;
-  password: string;
-  createdAt: string;
-  updatedAt: string;
+  ID: string;
+  USERNAME?: string;
+  EMAIL?: string;
+  PASSWORD?: string;
+  ROLE?: string;
+  LAST_TOKEN?: string;
+  TOKEN_EXPIRATION?: string;
+  CREATED_AT?: string;
+  UPDATED_AT?: string;
 }

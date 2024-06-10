@@ -1,36 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Bubble from '../components/ui/Bubble.astro'
-import CardList from '../components/display/CardList.astro'
-//import Cards from '../CardList'
-import TopMenu from '../components/TopMenu.astro'
+import CardList from '../components/display/Cards/CardList.astro'
 import type { CardInt } from '../types/Card'
+import NavTitle from '../components/ui/NavTitle.astro'
 const title = 'ETATS'
+const titles = ['RESULTATS', 'STATISTIQUES', 'ETATS']
 
-let Cards: CardInt[] =  [  {
-      id: 1,
-      title: "SUIVI OPERATIONNEL",
-      link: "https://www.google.com",
-      description: "This is a card",
-    },
-    {
-      id: 2,
-      title: "COMPARATIF ANNEES",
-      link: "https://www.google.com",
-      description: "This is a card",
-    },{
-    id: 3,
-    title: "TYPES D'AFFAIRES",
+let Cards: CardInt[] =  [  
+{
+    id: 11,
+    title: "EXPORT",
     link: "https://www.google.com",
     description: "This is a card",
-  }
+  },
+  {
+    id: 12,
+    title: "EXTAIT DE COMPTES",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 14,
+    title: "BELEX RELEVE MENSUEL",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 15,
+    title: "BELEX APPUREMENTS (CGL)",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 16,
+    title: "BELEX APPUREMENTS (BELCO)",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 17,
+    title: "BALANCE TIERS",
+    link: "https://www.google.com",
+    description: "solde client solde fournisseur",
+  },
+
+
   ]
     
 ---
 
 <Layout title={title} noTitle={true}>
-  <TopMenu title={title} />
-  <Bubble cls="">
+  <NavTitle title={title} titles={titles}/>
+  <Bubble cls="p-10 w-full m-auto h-[calc(100%_-_130px)] overflow-y-auto">
     <CardList cards={Cards} />
   </Bubble>
 </Layout>

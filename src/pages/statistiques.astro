@@ -1,74 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Op from '../components/display/Cards/Op.astro'
 import Bubble from '../components/ui/Bubble.astro'
-import CardList from '../components/display/CardList.astro'
-import Cards from '../CardList'
+import CardList from '../components/display/Cards/CardList.astro'
 import TopMenu from '../components/TopMenu.astro'
+import type { CardInt } from '../types/Card'
+import NavTitle from '../components/ui/NavTitle.astro'
 const title = 'STATISTIQUES'
+const titles = ['RESULTATS', 'STATISTIQUES', 'ETATS']
+
+let Cards: CardInt[] =  [  
+    {
+      id: 2,
+      title: "COMPARATIF ANNEES",
+      link: "https://www.google.com",
+      description: "This is a card",
+    },  {
+    id: 3,
+    title: "TYPE D'AFFAIRE",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 4,
+    title: "ANALYSE FARDES",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 9,
+    title: "ANALYSE CLIENTS",
+    link: "https://www.google.com",
+    description: "This is a card",
+  },
+  {
+    id: 13,
+    title: "DECLARANT",
+    link: "https",
+    description: "This is a card",
+  },
+  ]
 ---
 
 <Layout title={title} noTitle={true}>
-  <TopMenu title={title} />
-  <Bubble cls="">
+  <NavTitle title={title} titles={titles}/>
+  <Bubble cls="p-10 w-full m-auto h-[calc(100%_-_130px)] overflow-y-auto">
+    <Op/>
     <CardList cards={Cards} />
   </Bubble>
 </Layout>
-
-<style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: black;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(var(--accent-dark), var(--accent-dark));
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
-</style>

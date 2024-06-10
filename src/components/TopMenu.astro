@@ -1,11 +1,1 @@
----
-import NavTitle from './ui/NavTitle.astro'
-import { titles } from '../NavTitles'
-import { encoding } from '../NavEncoding'
-const { title } = Astro.props
----
 
-<div>
-  <NavTitle title={title} titles={titles} />
-  <NavTitle title={''} titles={encoding} />
-</div>

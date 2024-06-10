@@ -3,6 +3,7 @@ export interface CardInt {
   title: string;
   link: string;
   description: string;
+  child?: HTMLElement;
 }
 
 export interface CardIntList {

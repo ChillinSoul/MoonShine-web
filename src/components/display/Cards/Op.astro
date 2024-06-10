@@ -1,0 +1,26 @@
+---
+
+import Card from "./DisplayCard.astro";
+import { getData } from "./OpData"
+const data = await getData();
+console.log(data);
+---
+
+<Card title = "Suivi Operationnel">
+        <div class="text-center">
+            <p class="text-lg text-slate-500">Affaires</p>
+            <p class="text-2xl font-semibold text-slate-700">{data.totalAffaires}</p>
+        </div>
+        <div class="text-center">
+            <p class="text-lg text-slate-500">Colis</p>
+            <p class="text-2xl font-semibold text-slate-700">{data.totalColis}</p>
+        </div>
+        <div class="text-center">
+            <p class="text-lg text-slate-500">Poids</p>
+            <p class="text-2xl font-semibold text-slate-700">{data.totalPoids}</p>
+        </div>
+</Card>
+
+
+  
+  

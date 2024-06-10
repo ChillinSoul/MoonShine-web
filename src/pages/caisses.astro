@@ -1,107 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import NavTitle from '../components/ui/NavTitle.astro'
-import InputLabel from '../components/input/InputLabel'
-import Button from '../components/input/Button.astro'
+import  CaisseTable  from '../components/display/Tables/CaisseTable'
 import Bubble from '../components/ui/Bubble.astro'
-import { encoding } from '../NavEncoding'
-export const prerender = true
+import NavTitle from '../components/ui/NavTitle.astro'
+const title = 'CAISSES'
+const titles = ["AFFAIRES","CAISSES", "CLIENTS" ]
 ---
 
-<Layout title="">
-  <NavTitle title="CAISSES" titles={encoding} />
-  <Bubble>
-    <form action="/caisses" method="post" class="flex-col">
-      <div class="flex justify-between">
-        <InputLabel
-          client:load
-          label="N PCE"
-          name="nPce"
-          type="text"
-          color="yellow"
-          value=""
-        />
-        <Button type="submit" color="green" text="VALIDER" />
-      </div>
-      <div class="grid grid-cols-[1fr,1fr,2fr]">
-        <InputLabel
-          label="DATE"
-          name="date"
-          type="text"
-          color="indigo"
-          value=""
-        />
-        <InputLabel
-          label="TYPE PCE"
-          name="typePce"
-          type="text"
-          color="indigo"
-          value=""
-        />
-        <InputLabel
-          label="LIBELLE"
-          name="libelle"
-          type="textArea"
-          color="indigo"
-          value=""
-          maxWidth="true"
-        />
-        <InputLabel
-          label="AFFAIRE"
-          name="affaire"
-          type="text"
-          color="amber"
-          value=""
-        />
-        <InputLabel
-          label="FARDE"
-          name="farde"
-          type="text"
-          color="amber"
-          value=""
-        />
-        <div class="grid grid-cols-2">
-          <InputLabel
-            label="TIERS"
-            name="tiers"
-            type="text"
-            color="amber"
-            value=""
-          />
-          <InputLabel
-            label="N FCT"
-            name="nFct"
-            type="text"
-            color="amber"
-            value=""
-          />
-        </div>
-        <InputLabel
-          label="DEVISE"
-          name="devise"
-          type="text"
-          color="indigo"
-          value=""
-        />
-        <InputLabel
-          label="TAUX"
-          name="taux"
-          type="text"
-          color="indigo"
-          value=""
-        />
-        <div class="grid grid-cols-2">
-          <InputLabel
-            label="VALEUR"
-            name="valeur"
-            type="text"
-            color="indigo"
-            value=""
-          />
-          <InputLabel label="x" name="x" type="text" color="indigo" value="" />
-        </div>
-      </div>
-    </form>
-  </Bubble>
+<Layout title={title} noTitle={true}>
+  <NavTitle titles={titles} title ={title}/>
+  <Bubble cls="h-full overflow-auto">
+    { <CaisseTable client:load/>}
+    </Bubble>
 </Layout>
-../components/input/InputLabel

@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro'
+import  AffaireTable  from '../components/display/Tables/AffaireTable'
+import Bubble from '../components/ui/Bubble.astro'
+import NavTitle from '../components/ui/NavTitle.astro'
+const title = 'AFFAIRES'
+const titles = ["AFFAIRES","CAISSES", "CLIENTS" ]
+---
+
+<Layout title={title} noTitle={true}>
+  <NavTitle titles={titles} title ={title}/>
+  <Bubble cls="h-full overflow-auto">
+    { <AffaireTable client:load/>}
+    </Bubble>
+</Layout>

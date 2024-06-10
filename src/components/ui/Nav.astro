@@ -2,22 +2,32 @@
 
 ---
 
-<div class="fixed flex w-full items-center justify-between p-4">
+<div class="nav flex w-full items-center justify-between p-4 rounded drop-shadow">
   <h1 class="text-2xl font-bold">Moonshine</h1>
   <div class="flex items-center space-x-4">
     <a href="/"> Home</a>
-    <a href="/user"> Profile</a>
-    <a href="/login"> Login</a>
+    <div id="user"></div>
+    <div id="login"></div>
     <a href="/settings">Settings</a>
   </div>
 </div>
-
+<script>
+  import type { User } from '../../types/User';
+  let user = sessionStorage.getItem('user');
+  user = user ? JSON.parse(user) : null as User | null;
+  if (user && user.USERNAME) {
+    document.getElementById('user').innerHTML = `<a href="/profile">${user.USERNAME}</a>`;
+  }
+  if (!user) {
+    document.getElementById('login').innerHTML = `<a href="/login">Login</a>`;
+  }
+  else {
+    document.getElementById('login').innerHTML = `<a href="/logout">Logout</a>`;
+  }
+</script>
 <style>
-  .fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  .nav {
+
     background-color: rgb(244, 244, 244);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;

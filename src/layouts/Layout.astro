@@ -1,12 +1,17 @@
 ---
-import Nav from '../components/ui/Nav.astro'
-import PageTitleWrapper from '../components/PageTitleWrapper.astro'
+import Nav from '../components/ui/Nav'
+import AuthCheck from '../components/auth/authCheck.astro'
 import { ViewTransitions } from 'astro:transitions'
 interface Props {
   title: string
   noTitle?: boolean
 }
 import Aside from '../components/ui/Aside.astro'
+import 'handsontable/dist/handsontable.full.min.css'
+import { registerAllModules } from 'handsontable/registry';
+
+registerAllModules();
+
 const { title, noTitle } = Astro.props
 ---
 
@@ -21,19 +26,30 @@ const { title, noTitle } = Astro.props
     <ViewTransitions />
     <title>{title}</title>
   </head>
-  <body class="overflow-y-auto h-full">
-    <Nav />
-    <div class="flex flex-col md:flex-row">
-      <Aside />
-      <main class="flex-1">
-        <PageTitleWrapper title={noTitle ? '' : title}>
-          <slot />
-        </PageTitleWrapper>
-      </main>
+  <body class=" h-[100vh] w-[100vw] grid grid-rows-[65px_auto] grid-cols-[210px_auto] gap-2 p-2">
+    <AuthCheck>
+    <div class="col-span-2 row-start-1 ">
+      
+      <Nav client:load/>
+    </div>
     
-
-    <script>
-
-    </script>
+    <div class="">
+      
+      <Aside />
+    </div>
+      
+      <main class="grid-cols-1 grid-rows-[130px_auto] math">
+        
+          <slot />
+        
+      </main>
+    </AuthCheck>
   </body>
 </html>
+
+<style>
+  .math{
+    width : calc(100vw - 210px - 2rem);
+    height: calc(100vh - 65px - 2rem);
+  }
+</style>

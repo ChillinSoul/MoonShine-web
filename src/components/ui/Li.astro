@@ -1,0 +1,16 @@
+---
+// src/components/Li.astro
+const { href, text, extraClass = "" } = Astro.props;
+---
+<li class="mt-2 w-48 h-10">
+  <a href={href} class={`block text-xl text-slate-500 px-10 border rounded-xl text-center hover:bg-orange-400 hover:text-white ${extraClass}`}>
+    {text}
+  </a>
+</li>
+
+
+<style>
+    * {
+        transition: all 0.5s;
+    }
+</style>

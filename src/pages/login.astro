@@ -1,45 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import InputLabel from '../components/input/InputLabel'
-import Button from '../components/input/Button.astro'
+
+import Bubble from '../components/ui/Bubble.astro';
+import LoginForm from '../components/auth/login';
+
 ---
+  <Bubble cls="w-96 justify-center m-auto mt-10">
+    <p>Login</p>
+    <LoginForm client:load/> 
+  </Bubble>
 
-<Layout title="">
-  <form
-    id="loginForm"
-    class="items-center m-20 hover:border-orange-400 focus-within:border-orange-400 p-10 rounded-lg border-2"
-  >
-    <h1 class="text-5xl pb-10 text-orange-400">login</h1>
-    <InputLabel name="username" type="text" label="Username" />
-    <InputLabel name="password" type="password" label="Password" />
-    <Button text="valider" color="orange" />
-  </form>
-</Layout>
-<script>
-  const form = document.getElementById('loginForm');
-
-  form?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(form as HTMLFormElement);
-    const username = formData.get('username');
-    const password = formData.get('password');
-
-    const response = await fetch('http://localhost:4000/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
-    console.log(response);
-    if (response.ok) {
-      const { token } = await response.json();
-      console.log(token);
-      localStorage.setItem('jwt', token);
-      alert('Login successful!');
-    } else {
-      alert('Login failed!');
-    }
-  });
-</script>

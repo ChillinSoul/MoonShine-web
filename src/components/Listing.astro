@@ -1,26 +1,70 @@
 ---
-const { title, color, columns } = Astro.props
-const nCols = columns.length
+
+import type { AffaireType } from "../types/Affaires";
+import { DataTable } from "./display/Tables/DataTable";
+
+const columns = [
+{
+    header: "AFFAIRE",
+    accessor: "AFFAIRE",
+  },
+  {
+    header: "DECLARANT",
+    accessor: "DECLARANT",
+  },
+  {
+    header: "DATE",
+    accessor: "DATE",
+  },
+  {
+    header: "FARDE",
+    accessor: "FARDE",
+  },
+  {
+    header: "LTA",
+    accessor: "LTA",
+  },
+  {
+    header: "CLIENT",
+    accessor: "CLIENT",
+  },
+];
+
+async function getData(): Promise<AffaireType[]> {
+    const query = `
+    query AffaireFromTo($from: Int, $to: Int) {
+  affaireFromTo(from: $from, to: $to) {
+    DECLARANT
+    DATE
+    FARDE
+    LTA
+    AFFAIRE
+    CLIENT
+  }
+}
+`;
+  const response = await fetch("http://localhost:4000/graphql", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: query,
+          variables: {
+              from: 0,
+              to: 5,
+            },
+    }),
+  });
+
+  const json = await response.json();
+  console.log(json);
+  const  Affaires  = json.data.affaireFromTo;
+  return Affaires;
+}
+const data = await getData();
+console.log(data);
 ---
 
-<div class="m-5">
-  <h2 class=` text-${color}-500 text-center  p-2`>{title}</h2>
-  <div class=`grid grid-cols-${nCols}  border-[1px]rounded border-${color} `>
-    {
-      columns.map((item: any) => (
-        <div class={` `}>
-          <h3
-            class={`text-${item.color}-500  border-${item.color}-500 text-center`}
-          >
-            {item.title}
-          </h3>
-          {item.items.map((subItem: any, j: number) => (
-            <div class={`border-[1px] border-${item.color}-200 p-2`}>
-              {subItem}
-            </div>
-          ))}
-        </div>
-      ))
-    }
-  </div>
+<div class="container  overflow-auto ">
+  <DataTable columns={columns} data={data} client:load/>
 </div>
+

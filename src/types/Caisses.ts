@@ -1,21 +1,20 @@
-interface Caisses {
-  id: string;
-  name: string;
-  creationDate: string;
-  lastUpdate: string;
-  items: CaisseItem[];
-}
-interface CaisseItem {
-  nPce: string;
-  date: string;
-  typePce: string;
-  libelle: string;
-  affaire: string;
-  farde: string;
-  tiers: string;
-  nFct: string;
-  devise: string;
-  taux: string;
-  valeur: string;
-  x: string;
-}
+type CaisseType = {
+  String: String;
+  ID: string;
+  DATE: string;
+  N_PCE: number;
+  TYPE_PCE: string;
+  AFFAIRE: string;
+  FARDE: string;
+  StringENTIFIANT: string;
+  LIBELLE: string;
+  TX: number;
+  CAISSE_USD: number;
+  CAISSE_EUR: number;
+  TOTAL_USD: number;
+  CTRL: string;
+  N_FCT: string;
+  CAISSE: string;
+  REMARQUES: string;
+};
+export type { CaisseType };

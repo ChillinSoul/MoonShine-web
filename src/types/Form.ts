@@ -1,10 +1,14 @@
 export interface FormInputInt {
+  id?: string;
   label: string;
   name: string;
   type: string;
   color?: string;
-  value?: string;
+  value: string | number | undefined;
   maxWidth?: string;
+  cls?: string;
+  onChange?: any;
+  options?: string[];
 }
 
 export interface ButtonInt {

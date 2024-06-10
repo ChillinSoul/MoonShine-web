@@ -1,13 +1,14 @@
 ---
-import type { CardInt } from "../../types/Card";
+import type { CardInt } from "../../../types/Card";
 const { card } = Astro.props as { card: CardInt };
 ---
 
-<li class="m-2 animate rounded-lg list-none h-100 hover:bg-slate-300 w-full">
+<li class="m-2 animate rounded list-none h-100 hover:bg-slate-300 w-full">
   <a href={card.link} class="h-full w-full">
-    <div class="animate h-full rounded-lg border-2 border-orange-400 p-4">
-      <h2 class="text-3xl text-slate-900">{card.title}</h2>
+    <div class=" h-full rounded border border-orange-400 p-4">
+      <h2 class="text-3xl text-slate-700">{card.title}</h2>
       <p class="text-slate-600">{card.description}</p>
+      <slot/>
     </div>
   </a>
 </li>
@@ -22,13 +23,13 @@ const { card } = Astro.props as { card: CardInt };
       transform: scale(1);
     }
     50% {
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
     100% {
       transform: scale(1);
     }
   }
   .animate:hover {
-    animation: breathe 2s infinite;
+    animation: breathe 3s infinite;
   }
 </style>

@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro'
+import NavTitle from '../components/ui/NavTitle.astro'
+import InputLabel from '../components/input/InputLabel'
+import Button from '../components/input/Button.astro'
+import Bubble from '../components/ui/Bubble.astro'
+import { encoding } from '../NavEncoding'
+export const prerender = true
+---
+
+<Layout title="CAISSES" noTitle={true}>
+  <NavTitle title="CAISSE" titles={encoding} />
+  <Bubble cls="p-10 w-full m-auto h-[calc(100%_-_130px)] overflow-y-auto">
+    <form action="/caisses" method="post" class="flex-col w-3/4 m-auto">
+      <div class="flex justify-between">
+        <InputLabel
+          client:load
+          label="N PCE"
+          name="nPce"
+          type="text"
+          color="yellow"
+          value=""
+          maxWidth="true"
+        />
+        <Button type="submit" color="green" text="VALIDER" />
+      </div >
+      <div class="grid lg:grid-cols-2 xl:grid-cols-4">
+        <InputLabel
+          label="DATE"
+          name="date"
+          type="text"
+          color="indigo"
+          value=""
+          maxWidth="true"
+        />
+        <InputLabel
+          label="TYPE PCE"
+          name="typePce"
+          type="text"
+          color="indigo"
+          value=""
+          maxWidth="true"
+        />
+        <InputLabel
+          label="LIBELLE"
+          name="libelle"
+          type="textArea"
+          color="indigo"
+          value=""
+          maxWidth="true"
+          cls="col-span-2 w-full"
+        />
+        <InputLabel
+          label="AFFAIRE"
+          name="affaire"
+          type="text"
+          color="amber"
+          value=""
+          maxWidth="true"
+        />
+        <InputLabel
+          label="FARDE"
+          name="farde"
+          type="text"
+          color="amber"
+          value=""
+          maxWidth="true"
+        />
+       
+          <InputLabel
+            label="TIERS"
+            name="tiers"
+            type="text"
+            color="amber"
+            value=""
+            maxWidth="true"
+          />
+          <InputLabel
+            label="N FCT"
+            name="nFct"
+            type="text"
+            color="amber"
+            value=""
+            maxWidth="true"
+          />
+        
+        <InputLabel
+          label="DEVISE"
+          name="devise"
+          type="text"
+          color="indigo"
+          value=""
+          maxWidth="true"
+        />
+        <InputLabel
+          label="TAUX"
+          name="taux"
+          type="text"
+          color="indigo"
+          value=""
+          maxWidth="true"
+        />
+          <InputLabel
+            label="VALEUR"
+            name="valeur"
+            type="text"
+            color="indigo"
+            value=""
+            maxWidth="true"
+          />
+          <InputLabel label="x" name="x" type="text" color="indigo" value="" maxWidth="true"/>
+     
+      </div>
+    </form>
+  </Bubble>
+</Layout>
+
