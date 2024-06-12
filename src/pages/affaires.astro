@@ -10,6 +10,6 @@ const titles = ["AFFAIRES","CAISSES", "CLIENTS" ]
 <Layout title={title} noTitle={true}>
   <NavTitle titles={titles} title ={title}/>
   <Bubble cls=" h-[calc(100%_-_130px)]">
-    <AffaireTable client:only="react"/>
+    <AffaireTable client:load/>
     </Bubble>
 </Layout>

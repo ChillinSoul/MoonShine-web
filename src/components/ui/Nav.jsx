@@ -13,7 +13,7 @@ export default function Nav() {
     }, []);
 
     return (
-        <div className="nav flex w-full items-center justify-between p-4 rounded drop-shadow">
+        <div className="nav flex w-full items-center justify-between p-4 rounded drop-shadow bg-[rgb(244,244,244)]">
             <h1 className="text-2xl font-bold">Moonshine</h1>
             <div className="flex items-center space-x-4">
                 <a href="/"> Home</a>
